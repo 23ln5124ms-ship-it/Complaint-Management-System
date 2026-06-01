@@ -24,11 +24,4 @@ class CategoryFactory extends Factory
             'is_active'   => true,
         ];
     }
-
-    public function inactive()
-    {
-        return $this->state(fn(array $attributes) => [
-            'is_active' => false,
-        ]);
-    }
 }

@@ -9,7 +9,6 @@ use App\Models\Tag;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Str;
 
 class DatabaseSeeder extends Seeder
 {
@@ -34,11 +33,7 @@ class DatabaseSeeder extends Seeder
             ['name' => 'Product',         'color' => '#10b981', 'description' => 'Product feedback and issues'],
             ['name' => 'Delivery',        'color' => '#8b5cf6', 'description' => 'Shipping and delivery complaints'],
             ['name' => 'Other',           'color' => '#6b7280', 'description' => 'Other complaints'],
-        ])->map(function($c) {
-            $c['slug'] = Str::slug($c['name']);
-            $c['is_active'] = true;
-            return Category::create($c);
-        });
+        ])->map(fn($c) => Category::create($c));
 
         // ── Tags ─────────────────────────────────────────────────────────────
         $tags = collect([
@@ -58,7 +53,6 @@ class DatabaseSeeder extends Seeder
             $c->category_id = $categories->random()->id;
             $c->status      = $statuses[array_rand($statuses)];
             $c->priority    = $priorities[array_rand($priorities)];
-            $c->ticket_number = $c->generateTicketNumber();
             $c->save();
         });
 
