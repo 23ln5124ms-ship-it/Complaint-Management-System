@@ -77,7 +77,7 @@
                                     <p class="text-xs text-gray-500">{{ $response->created_at->format('M d, Y h:i A') }}</p>
                                 </div>
                                 @if($response->attachment)
-                                    <a href="{{ route('attachments.view', ['path' => $response->attachment]) }}" class="text-sm font-medium text-indigo-600 hover:text-indigo-500" target="_blank" rel="noreferrer noopener">Download</a>
+                                    <a href="{{ route('attachments.view', ['path' => $response->attachment]) }}" class="text-sm font-medium text-indigo-600 hover:text-indigo-500" target="_blank" rel="noreferrer noopener">View</a>
                                 @endif
                             </div>
                             <p class="mt-3 text-sm leading-6 text-gray-700">{{ $response->message }}</p>
