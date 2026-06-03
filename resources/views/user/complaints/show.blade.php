@@ -52,7 +52,7 @@
                     @if($complaint->attachment)
                         <div>
                             <h3 class="font-medium text-gray-900">Attachment</h3>
-                            <a href="{{ Storage::disk('public')->url($complaint->attachment) }}"
+                            <a href="{{ route('attachments.view', ['path' => $complaint->attachment]) }}"
                                class="mt-2 inline-flex items-center gap-2 text-sm font-medium text-indigo-600 hover:text-indigo-500"
                                target="_blank" rel="noreferrer noopener">
                                 View attachment
@@ -80,7 +80,7 @@
                                     <p class="text-xs text-gray-400">{{ $response->created_at->format('M j, Y h:i A') }}</p>
                                 </div>
                                 @if($response->attachment)
-                                    <a href="{{ Storage::disk('public')->url($response->attachment) }}"
+                                    <a href="{{ route('attachments.view', ['path' => $response->attachment]) }}"
                                        class="text-sm font-medium text-indigo-600 hover:text-indigo-500"
                                        target="_blank" rel="noreferrer noopener">Download</a>
                                 @endif

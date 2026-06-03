@@ -57,7 +57,7 @@
                     @if($complaint->attachment)
                         <div>
                             <h3 class="font-semibold text-gray-900">Attachment</h3>
-                            <a href="{{ Storage::disk('public')->url($complaint->attachment) }}" target="_blank" rel="noreferrer noopener"
+                            <a href="{{ route('attachments.view', ['path' => $complaint->attachment]) }}" target="_blank" rel="noreferrer noopener"
                                class="mt-2 inline-flex items-center gap-2 text-sm font-medium text-indigo-600 hover:text-indigo-500">
                                 View attachment
                             </a>
@@ -77,7 +77,7 @@
                                     <p class="text-xs text-gray-500">{{ $response->created_at->format('M d, Y h:i A') }}</p>
                                 </div>
                                 @if($response->attachment)
-                                    <a href="{{ Storage::disk('public')->url($response->attachment) }}" class="text-sm font-medium text-indigo-600 hover:text-indigo-500" target="_blank" rel="noreferrer noopener">Download</a>
+                                    <a href="{{ route('attachments.view', ['path' => $response->attachment]) }}" class="text-sm font-medium text-indigo-600 hover:text-indigo-500" target="_blank" rel="noreferrer noopener">Download</a>
                                 @endif
                             </div>
                             <p class="mt-3 text-sm leading-6 text-gray-700">{{ $response->message }}</p>

@@ -76,15 +76,32 @@ class Complaint extends Model
     protected static function booted(): void
     {
         static::creating(function (Complaint $complaint) {
-            $complaint->ticket_number = static::generateTicketNumber();
+            if (empty($complaint->ticket_number)) {
+                $complaint->ticket_number = static::generateTicketNumber();
+            }
         });
     }
 
     public static function generateTicketNumber(): string
     {
         $year = now()->year;
-        $count = static::whereYear('created_at', $year)->count() + 1;
-        return sprintf('CMP-%d-%05d', $year, $count);
+        $pattern = sprintf('CMP-%d-', $year);
+
+        $lastNumber = static::query()
+            ->where('ticket_number', 'like', $pattern . '%')
+            ->get()
+            ->map(fn (Complaint $complaint) => (int) substr($complaint->ticket_number, -5))
+            ->max();
+
+        $nextNumber = (int) ($lastNumber ?? 0) + 1;
+        $ticketNumber = sprintf('CMP-%d-%05d', $year, $nextNumber);
+
+        while (static::query()->where('ticket_number', $ticketNumber)->exists()) {
+            $nextNumber++;
+            $ticketNumber = sprintf('CMP-%d-%05d', $year, $nextNumber);
+        }
+
+        return $ticketNumber;
     }
 
     public function isResolved(): bool

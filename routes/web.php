@@ -10,7 +10,15 @@ use Illuminate\Support\Facades\Route;
 
 // ─── Public ──────────────────────────────────────────────────────────────────
 
-Route::get('/', fn() => redirect()->route('login'));
+Route::get('/', fn() => view('welcome'));
+
+Route::get('/attachments/{path}', function (string $path) {
+    $fullPath = storage_path('app/public/' . ltrim($path, '/'));
+
+    abort_if(! file_exists($fullPath) || ! is_file($fullPath), 404);
+
+    return response()->file($fullPath);
+})->where('path', '.*')->name('attachments.view');
 
 Route::middleware('guest')->group(function () {
     Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
