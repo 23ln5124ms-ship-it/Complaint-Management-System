@@ -108,7 +108,7 @@ class ComplaintController extends Controller
         $request->validate([
             'message'     => ['required', 'string', 'min:5'],
             'is_internal' => ['boolean'],
-            'attachment'  => ['nullable', 'file', 'max:5120'],
+            'attachment'  => ['nullable', 'file', 'max:10240', 'mimes:pdf,jpg,jpeg,png,gif,webp,doc,docx'],
         ]);
 
         $path = null;

@@ -55,7 +55,7 @@ class ComplaintController extends Controller
             'title'       => ['required', 'string', 'max:255'],
             'description' => ['required', 'string', 'min:20'],
             'priority'    => ['required', 'in:low,medium,high,urgent'],
-            'attachment'  => ['nullable', 'file', 'max:5120', 'mimes:pdf,jpg,jpeg,png,doc,docx'],
+            'attachment'  => ['nullable', 'file', 'max:10240', 'mimes:pdf,jpg,jpeg,png,gif,webp,doc,docx'],
             'tags'        => ['nullable', 'array'],
             'tags.*'      => ['exists:tags,id'],
         ]);
@@ -101,7 +101,7 @@ class ComplaintController extends Controller
             'title'       => ['required', 'string', 'max:255'],
             'description' => ['required', 'string', 'min:20'],
             'priority'    => ['required', 'in:low,medium,high,urgent'],
-            'attachment'  => ['nullable', 'file', 'max:5120', 'mimes:pdf,jpg,jpeg,png,doc,docx'],
+            'attachment'  => ['nullable', 'file', 'max:10240', 'mimes:pdf,jpg,jpeg,png,gif,webp,doc,docx'],
             'tags'        => ['nullable', 'array'],
             'tags.*'      => ['exists:tags,id'],
         ]);
@@ -144,7 +144,7 @@ class ComplaintController extends Controller
 
         $request->validate([
             'message'    => ['required', 'string', 'min:5'],
-            'attachment' => ['nullable', 'file', 'max:5120'],
+            'attachment' => ['nullable', 'file', 'max:10240', 'mimes:pdf,jpg,jpeg,png,gif,webp,doc,docx'],
         ]);
 
         $path = null;

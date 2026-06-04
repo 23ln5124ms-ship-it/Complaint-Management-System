@@ -106,7 +106,7 @@
 
                     <div>
                         <label class="block text-sm font-medium text-gray-700">Attachment (optional)</label>
-                        <input type="file" name="attachment"
+                        <input type="file" name="attachment" accept=".pdf,.jpg,.jpeg,.png,.gif,.webp,.doc,.docx"
                                class="mt-2 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100">
                     </div>
 

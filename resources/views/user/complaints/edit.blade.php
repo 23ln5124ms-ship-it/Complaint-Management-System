@@ -81,12 +81,12 @@
             <div>
                 <label class="block text-sm font-medium text-gray-700 mb-1">Attachment (optional)</label>
                 <input type="file" name="attachment"
-                       accept=".pdf,.jpg,.jpeg,.png,.doc,.docx"
+                       accept=".pdf,.jpg,.jpeg,.png,.gif,.webp,.doc,.docx"
                        class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100">
                 @if($complaint->attachment)
                     <p class="mt-2 text-sm text-gray-500">Current file: <a href="{{ route('attachments.view', ['path' => $complaint->attachment]) }}" class="text-indigo-600 hover:text-indigo-500">View attachment</a></p>
                 @endif
-                <p class="mt-1 text-xs text-gray-400">PDF, JPG, PNG, DOC up to 5MB</p>
+                <p class="mt-1 text-xs text-gray-400">PDF, JPG, PNG, GIF, WEBP, DOC up to 10MB</p>
             </div>
 
             <div class="flex gap-3 pt-2">
