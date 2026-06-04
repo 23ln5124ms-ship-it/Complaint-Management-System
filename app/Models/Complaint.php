@@ -80,6 +80,12 @@ class Complaint extends Model
                 $complaint->ticket_number = static::generateTicketNumber();
             }
         });
+
+        static::saving(function (Complaint $complaint) {
+            if (in_array($complaint->status, ['resolved', 'closed'], true) && empty($complaint->resolved_at)) {
+                $complaint->resolved_at = now();
+            }
+        });
     }
 
     public static function generateTicketNumber(): string

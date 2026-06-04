@@ -39,7 +39,15 @@
                     <td>{{ ucfirst(str_replace('_', ' ', $complaint->status)) }}</td>
                     <td>{{ ucfirst($complaint->priority) }}</td>
                     <td>{{ $complaint->created_at->format('Y-m-d') }}</td>
-                    <td>{{ $complaint->resolved_at?->format('Y-m-d') ?? 'N/A' }}</td>
+                    <td>
+                        @php
+                            $resolvedDate = $complaint->resolved_at
+                                ?? ($complaint->status === 'resolved' || $complaint->status === 'closed'
+                                    ? ($complaint->updated_at ?? $complaint->created_at)
+                                    : null);
+                        @endphp
+                        {{ $resolvedDate ? $resolvedDate->format('Y-m-d') : '—' }}
+                    </td>
                 </tr>
             @empty
                 <tr>
