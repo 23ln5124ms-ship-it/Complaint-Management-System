@@ -1,10 +1,6 @@
 <?php
-// ============================================================
-// routes/api.php
-// ============================================================
 
 use App\Http\Controllers\Api\ComplaintApiController;
-use Illuminate\Support\Facades\Route;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -36,14 +32,13 @@ Route::post('/login', function (Request $request) {
 });
 
 Route::middleware('auth:sanctum')->group(function () {
-
     // Complaints
-    Route::get('/complaints',          [ComplaintApiController::class, 'index']);
-    Route::post('/complaints',         [ComplaintApiController::class, 'store']);
-    Route::get('/complaints/{complaint}',    [ComplaintApiController::class, 'show']);
-    Route::put('/complaints/{complaint}',    [ComplaintApiController::class, 'update']);
-    Route::patch('/complaints/{complaint}',  [ComplaintApiController::class, 'update']);
-    Route::delete('/complaints/{complaint}', [ComplaintApiController::class, 'destroy']);
+    Route::get('/complaints',                        [ComplaintApiController::class, 'index']);
+    Route::post('/complaints',                       [ComplaintApiController::class, 'store']);
+    Route::get('/complaints/{complaint}',            [ComplaintApiController::class, 'show']);
+    Route::put('/complaints/{complaint}',            [ComplaintApiController::class, 'update']);
+    Route::patch('/complaints/{complaint}',          [ComplaintApiController::class, 'update']);
+    Route::delete('/complaints/{complaint}',         [ComplaintApiController::class, 'destroy']);
 
     // Responses
     Route::get('/complaints/{complaint}/responses',  [ComplaintApiController::class, 'responses']);
