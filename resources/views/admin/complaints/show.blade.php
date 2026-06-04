@@ -155,7 +155,6 @@
 
                     <div>
                         <label class="flex items-center gap-2 text-sm font-medium text-gray-700">
-                            <input type="checkbox" name="is_internal" value="1" class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"> Internal note
                         </label>
                     </div>
 
