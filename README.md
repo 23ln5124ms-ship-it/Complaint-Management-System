@@ -1,58 +1,85 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# ComplainHub — Complaint Management System
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+ComplainHub is a web-based system where users can file complaints and admins can manage and respond to them. It was built using the Laravel PHP framework.
 
-## About Laravel
+## Developers
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- Mariel Viray
+- Marie Anthonette Rodrigueza
+- Paul Vincent Pavo
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## How the System Works
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+There are two types of users in the system:
 
-## Learning Laravel
+*Regular Users* can sign up and log in, submit a complaint with a title, description, category, and priority, attach a file like a screenshot or document, check the status of their complaints, and reply to their complaint thread. They can also edit or delete their own complaints, but only while the status is still pending.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+*Admins* can see all complaints from all users, change the status, priority, and category of any complaint, post replies (public or as a private note only admins can see), manage categories and tags, view reports and analytics, and export complaint data as PDF, CSV, XLSX, or JSON.
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Complaint Flow
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+1. A user submits a complaint through the form.
+2. The system assigns a unique ticket number like CMP-2024-00001.
+3. The complaint starts as pending.
+4. An admin reviews it, changes the status to in_progress, and posts a response.
+5. Once done, the admin marks it as resolved or closed.
+6. The user can check for updates and reply at any time.
 
-## Agentic Development
+## Installation & Setup
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+### Requirements
 
-```bash
-composer require laravel/boost --dev
+- PHP 8.4
+- Composer
+- Laravel 13
+- MySQL or SQLite
 
-php artisan boost:install
-```
+### Steps
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+1. Clone the repository:
+   
+   git clone https://github.com/23ln5124ms-ship-it/Complaint-Management-System.git
+   cd Complaint-Management-System
+   
 
-## Contributing
+2. Install dependencies:
+   
+   composer install
+   
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+3. Copy the environment file and generate the app key:
+   
+   cp .env.example .env
+   php artisan key:generate
+   
 
-## Code of Conduct
+4. Set up your database in the .env file, then run the migrations and seeders:
+   
+   php artisan migrate --seed
+   
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+5. Create the storage link for file uploads:
+   
+   php artisan storage:link
+   
 
-## Security Vulnerabilities
+6. Start the local server:
+   
+   php artisan serve
+   
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### Default Admin Account
 
-## License
+Email:    admin@complaints.test
+Password: password
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Live Deployment
+
+[https://complaint-management-system-production-ea60.up.railway.app/login](https://complaint-management-system-production-ea60.up.railway.app/login)
+
+## Tech Stack
+
+- *Framework:* Laravel 13 (PHP 8.4)
+- *Frontend:* Blade Templates, CSS
+- *Database:* MySQL
+- *Hosting:* Railway
