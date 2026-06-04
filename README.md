@@ -14,7 +14,7 @@ There are two types of users in the system:
 
 *Regular Users* can sign up and log in, submit a complaint with a title, description, category, and priority, attach a file like a screenshot or document, check the status of their complaints, and reply to their complaint thread. They can also edit or delete their own complaints, but only while the status is still pending.
 
-*Admins* can see all complaints from all users, change the status, priority, and category of any complaint, post replies (public or as a private note only admins can see), manage categories and tags, view reports and analytics, and export complaint data as PDF, CSV, XLSX, or JSON.
+*Admins* can see all complaints from all users, change the status, priority, and category of any complaint, post replies, manage categories and tags, view reports and analytics, and export complaint data as PDF, CSV, XLSX, or JSON.
 
 ### Complaint Flow
 
